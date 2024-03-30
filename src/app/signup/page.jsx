@@ -6,7 +6,7 @@ import Image from "next/image";
 import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
-const apiURL = "https://auth-api-his-one-stop-muskanjais30.onrender.com";
+const apiURL = "http://localhost:5000/user";
 
 import {
   Card,
@@ -28,6 +28,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Signup() {
+  // console.log("KKK");
   const [position, setPosition] = useState("bottom");
   const [college, setCollege] = useState("");
   const [studentFirstname, setStudentFirstname] = useState("");
@@ -39,9 +40,11 @@ export default function Signup() {
   const [clubPassword, setClubPassword] = useState("");
   const [city, setCity] = useState("");
 
-  const handleStudentSignup = async () => {
+  const handleStudentSignup = async (e) => {
+    e.preventDefault();
     try {
-      console.log("IN");
+      // console.log("IN");
+      // console.log(`${apiURL}/signup-Student`);
       const response = await fetch(`${apiURL}/signup-Student`, {
         method: "POST",
         headers: {
@@ -57,8 +60,8 @@ export default function Signup() {
         console.error("Error fetching:", error);
       });
   
-      console.log("AFTER");
-      if (response && response.ok) {
+      // console.log("AFTER");
+      if (response.ok) {
         console.log("Signup Successful!");
       } else {
         console.log("Unsuccessful Signup");
@@ -68,10 +71,11 @@ export default function Signup() {
     }
   };
 
-  const handleClubSignup = async () => {
+  const handleClubSignup = async (e) => {
+    e.preventDefault();
     try {
       console.log("IN");
-      console.log(clubName,clubEmail,city,college,clubPassword);
+      // console.log(clubName,clubEmail,city,college,clubPassword);
       const response = await fetch(`${apiURL}/signup-Club`, {
         method: "POST",
         headers: {
