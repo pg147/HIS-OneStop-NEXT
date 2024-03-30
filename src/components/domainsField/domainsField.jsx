@@ -4,7 +4,7 @@ import Domains from "../uiComponents/domains/domains";
 export function DomainsBar() {
     return (
         <>
-            <Card className='max-w-fit max-h-fit p-4 rounded-3xl shadow-none border-2 border-[#D9D9D9] bg-[#f5f5f5]' >
+            <Card className='max-w-fit max-h-fit fixed p-4 rounded-3xl shadow-none border-2 border-[#D9D9D9] bg-[#f5f5f5]' >
                 <Domains />
             </Card>
         </>

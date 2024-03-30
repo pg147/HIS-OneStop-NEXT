@@ -1,6 +1,8 @@
 import PostInteractionBar from "../postInteractions/postInteractions";
 import { Card } from "@/components/ui/card";
 import UploaderDetails from "../uploaderDetails/uploaderDetails";
+import { Button } from "@/components/ui/button";
+
 export default function AfterPost(props) {
     return(
         <>
