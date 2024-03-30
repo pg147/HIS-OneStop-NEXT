@@ -3,15 +3,19 @@ import { DomainsBar } from "@/components/domainsField/domainsField";
 import SearchBar from "@/components/searchField/searchField";
 import Signup from "@/app/signup/page";
 import CreatePost from "@/components/createPost/page";
+import Login from "./login/page";
 
 export default function Home() {
   return (
-    <div className="flex justify-between p-8">
-      {/* <Signup /> */}
-      <CreatePost />
-      {/* <DomainsBar />
-      <SearchBar />
-      <ControlBar /> */}
-    </div>
+    <>
+      <div className="flex justify-between p-8">
+        {/* <Signup /> */}
+        <CreatePost />
+        {/* <DomainsBar />
+        <SearchBar />
+        <ControlBar /> */}
+      </div>
+      <Login />
+    </>
   );
 }
