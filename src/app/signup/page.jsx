@@ -6,6 +6,7 @@ import Image from "next/image";
 import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
+const apiURL = "https://auth-api-his-one-stop-muskanjais30.onrender.com";
 
 import {
   Card,
@@ -29,7 +30,73 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export default function Signup() {
   const [position, setPosition] = useState("bottom");
   const [college, setCollege] = useState("");
+  const [studentFirstname, setStudentFirstname] = useState("");
+  const [studentLastname, setStudentLastname] = useState("");
+  const [studentEmail, setStudentEmail] = useState("");
+  const [studentPassword, setStudentPassword] = useState("");
+  const [clubName, setClubName] = useState("");
+  const [clubEmail, setClubEmail] = useState("");
+  const [clubPassword, setClubPassword] = useState("");
   const [city, setCity] = useState("");
+
+  const handleStudentSignup = async () => {
+    try {
+      console.log("IN");
+      const response = await fetch(`${apiURL}/signup-Student`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: studentFirstname,
+          lastName: studentLastname,
+          email: studentEmail,
+          password: studentPassword,
+        }),
+      }).catch((error) => {
+        console.error("Error fetching:", error);
+      });
+  
+      console.log("AFTER");
+      if (response && response.ok) {
+        console.log("Signup Successful!");
+      } else {
+        console.log("Unsuccessful Signup");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  const handleClubSignup = async () => {
+    try {
+      console.log("IN");
+      console.log(clubName,clubEmail,city,college,clubPassword);
+      const response = await fetch(`${apiURL}/signup-Club`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clubName: clubName,
+          collegeUni: college,
+          email: clubEmail,
+          city: city,
+          password: clubPassword,
+        }),
+      });
+      console.log("AFTER");
+      if (response.ok) {
+        console.log("Signup Successful!");
+      }
+      else {
+        console.log("Unsuccessful Signup");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white">
@@ -82,11 +149,13 @@ export default function Signup() {
                           placeholder="First name"
                           type="text"
                           className="text-black font-semibold rounded-xl"
+                          onChange={(e) => setStudentFirstname(e.target.value)}
                         />
                         <Input
                           placeholder="Last name"
                           type="text"
                           className="text-black font-semibold rounded-xl "
+                          onChange={(e) => setStudentLastname(e.target.value)}
                         />
                       </div>
                       <div className="flex space-x-4">
@@ -94,6 +163,7 @@ export default function Signup() {
                           placeholder="Email"
                           type="email"
                           className="text-black font-semibold rounded-xl "
+                          onChange={(e) => setStudentEmail(e.target.value)}
                         />
                       </div>
                       <div className="flex space-x-4">
@@ -101,6 +171,7 @@ export default function Signup() {
                           placeholder="Password"
                           type="password"
                           className="text-black font-semibold rounded-xl"
+                          onChange={(e) => setStudentPassword(e.target.value)}
                         />
                       </div>
                       <div className="flex flex-col space-y-2">
@@ -114,7 +185,7 @@ export default function Signup() {
                             </Link>
                           </div>
                         </div>
-                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700">
+                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700" onClick={handleStudentSignup}>
                           Sign up
                         </Button>
                       </div>
@@ -131,6 +202,7 @@ export default function Signup() {
                           placeholder="Club name"
                           type="text"
                           className="rounded-xl font-semibold"
+                          onChange={(e) => setClubName(e.target.value)}
                         />
                       </div>
 
@@ -139,11 +211,12 @@ export default function Signup() {
                           placeholder="Email"
                           type="email"
                           className="rounded-xl font-semibold"
+                          onChange={(e) => setClubEmail(e.target.value)}
                         />
                       </div>
 
                       <div className="flex space-x-4">
-                        <Select>
+                        <Select onValueChange={(value) => setCollege(value)}>
                           <SelectTrigger className="rounded-xl cursor-pointer font-semibold text-gray-500">
                             <SelectValue placeholder="College or University" />
                           </SelectTrigger>
@@ -151,27 +224,30 @@ export default function Signup() {
                             <SelectItem value="rcoem">RCOEM</SelectItem>
                             <SelectItem value="vnit">VNIT</SelectItem>
                             <SelectItem value="ycce">YCCE</SelectItem>
+                            
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="flex space-x-4">
-                        <Select>
-                          <SelectTrigger className="rounded-xl cursor-pointer text-gray-500 font-semibold">
-                            <SelectValue placeholder="City" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="nagpur">Nagpur</SelectItem>
-                            <SelectItem value="jaipur">Jaipur</SelectItem>
-                          </SelectContent>
-                        </Select>
+                      <Select onValueChange={(value) => setCity(value)}>
+                      <SelectTrigger className="rounded-xl cursor-pointer text-gray-500 font-semibold">
+                      <SelectValue placeholder="City" />
+                      </SelectTrigger>
+                      <SelectContent>
+                      <SelectItem value="nagpur">Nagpur</SelectItem>
+                      <SelectItem value="jaipur">Jaipur</SelectItem>
+                      </SelectContent>
+                      </Select>
                       </div>
+                      
 
                       <div className="flex space-x-4 font-semibold">
                         <Input
                           placeholder="Password"
                           type="password"
                           className="rounded-xl "
+                          onChange={(e) => setClubPassword(e.target.value)}
                         />
                       </div>
                       <div className="flex flex-col space-y-2">
@@ -185,7 +261,7 @@ export default function Signup() {
                             </Link>
                           </div>
                         </div>
-                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700">
+                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700" onClick={handleClubSignup} >
                           Sign up
                         </Button>
                       </div>

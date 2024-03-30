@@ -5,6 +5,7 @@ import Image from "next/image";
 import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
+const apiURL="https://auth-api-his-one-stop-muskanjais30.onrender.com/user"
 
 import {
   Card,
@@ -27,8 +28,63 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Login() {
   const [position, setPosition] = useState("bottom");
-  const [college, setCollege] = useState("");
-  const [city, setCity] = useState("");
+  const [studentEmail, setStudentEmail] = useState("");
+  const [studentPassword, setStudentPassword] = useState("");
+  const [clubPassword, setClubPassword] = useState("");
+  const [clubEmail, setClubEmail] = useState("");
+
+  const handleStudentLogin = async () => {
+    try {
+      console.log("IN");
+      const response = await fetch(`${apiURL}/login-Student`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: studentEmail,
+          password: studentPassword,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // Store the token or session in frontend state or local storage
+        console.log("Login successful. Token:", data.token);
+      } else {
+        // Handle invalid credentials or other errors
+        console.error("Login failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  const handleClubLogin = async () => {
+    try {
+      const response = await fetch(`${apiURL}/login-Club`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: clubEmail,
+          password: clubPassword,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // Store the token or session in frontend state or local storage
+        console.log("Login successful. Token:", data.token);
+      } else {
+        // Handle invalid credentials or other errors
+        console.error("Login failed:", response.statusText);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white">
@@ -82,6 +138,7 @@ export default function Login() {
                           placeholder="Email"
                           type="email"
                           className="text-black font-semibold rounded-xl "
+                          onChange={(e) => setStudentEmail(e.target.value)} 
                         />
                       </div>
                       <div className="flex space-x-4">
@@ -89,13 +146,14 @@ export default function Login() {
                           placeholder="Password"
                           type="password"
                           className="text-black font-semibold rounded-xl"
+                          onChange={(e) => setStudentPassword(e.target.value)} 
                         />
                       </div>
                       <div className="flex flex-col space-y-2">
                         <div className="flex items-center justify-between">
                           <div className="text-sm"></div>
                         </div>
-                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700">
+                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700" onClick={handleStudentLogin}>
                           Log in
                         </Button>
                       </div>
@@ -112,6 +170,7 @@ export default function Login() {
                           placeholder="Email"
                           type="email"
                           className="rounded-xl font-semibold"
+                          onChange={(e) => setClubEmail(e.target.value)} 
                         />
                       </div>
 
@@ -120,11 +179,12 @@ export default function Login() {
                           placeholder="Password"
                           type="password"
                           className="rounded-xl "
+                          onChange={(e) => setClubPassword(e.target.value)}
                         />
                       </div>
                       <div className="flex flex-col space-y-2">
                         <div className="flex items-center justify-between"></div>
-                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700">
+                        <Button className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700" onClick={handleClubLogin}>
                           Log in
                         </Button>
                       </div>
