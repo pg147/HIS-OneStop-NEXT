@@ -6,7 +6,7 @@ import UploaderDetails from "../uploaderDetails/uploaderDetails";
 export default function PostInteractionBar() {
     return (
         <>
-            <Card className="flex justify-evenly rounded-2x max-w-full px-4 py-2">
+            <Card className="flex justify-evenly shadow-none rounded-2xl max-w-full px-4 py-2">
                 <Button variant="ghost" className="rounded-xl">
                     <HeartIcon className="mr-2 h-4 w-4" /> Like
                 </Button>

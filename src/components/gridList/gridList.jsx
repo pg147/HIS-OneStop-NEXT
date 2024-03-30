@@ -11,7 +11,6 @@ export default function GridList() {
                 <CreatePost className = "grid-item"/>
                 <AfterPost className = "grid-item" />
                 <AfterPost className = "grid-item" />
-                
             </div>
         </>
     );
