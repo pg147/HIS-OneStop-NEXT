@@ -5,6 +5,7 @@ import Image from "next/image";
 import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
+import { useRouter } from 'next/router';
 const apiURL = "http://localhost:5000/user";
 
 import {
@@ -50,6 +51,9 @@ export default function Login() {
       if (response.ok) {
         const data = await response.json();
         console.log("Login successful. Token:", data.token);
+        const router = useRouter();
+        router.push('');
+
       } else {
         const errorData = await response.json();
         console.error("Login failed:", errorData.message);
@@ -105,22 +109,20 @@ export default function Login() {
               <TabsList className="grid w-full grid-cols-2 mb-4">
                 <TabsTrigger
                   value="student"
-                  className={`rounded-xl ${
-                    position === "student"
+                  className={`rounded-xl ${position === "student"
                       ? " text-white bg-black"
                       : "bg-transparent text-black"
-                  }`}
+                    }`}
                   onClick={() => setPosition("student")}
                 >
                   Student
                 </TabsTrigger>
                 <TabsTrigger
                   value="club"
-                  className={`rounded-xl ${
-                    position === "club"
+                  className={`rounded-xl ${position === "club"
                       ? " text-white bg-black"
                       : "bg-transparent text-black"
-                  }`}
+                    }`}
                   onClick={() => setPosition("club")}
                 >
                   Club
