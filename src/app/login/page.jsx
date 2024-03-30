@@ -6,7 +6,8 @@ import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
 import { useRouter } from 'next/router';
-const apiURL = "http://localhost:5000/user";
+const apiURL = "https://auth-api-his-one-stop-muskanjais30.onrender.com/user";
+
 
 import {
   Card,
@@ -52,7 +53,7 @@ export default function Login() {
         const data = await response.json();
         console.log("Login successful. Token:", data.token);
         const router = useRouter();
-        router.push('/interface');
+        router.push('/mainInterface');
 
       } else {
         const errorData = await response.json();

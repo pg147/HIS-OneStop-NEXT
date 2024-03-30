@@ -6,7 +6,8 @@ import Image from "next/image";
 import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
-const apiURL = "http://localhost:5000/user";
+import Router from "next/router";
+const apiURL = "https://auth-api-his-one-stop-muskanjais30.onrender.com/user";
 
 import {
   Card,
@@ -63,6 +64,7 @@ export default function Signup() {
       // console.log("AFTER");
       if (response.ok) {
         console.log("Signup Successful!");
+        Router.push('/interface')
       } else {
         console.log("Unsuccessful Signup");
       }
@@ -92,6 +94,7 @@ export default function Signup() {
       console.log("AFTER");
       if (response.ok) {
         console.log("Signup Successful!");
+        
       }
       else {
         console.log("Unsuccessful Signup");
