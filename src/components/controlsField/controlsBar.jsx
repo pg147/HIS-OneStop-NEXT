@@ -11,7 +11,7 @@ export default function ControlBar() {
                         <h3 className="mt-2 font-medium text-xl">The RAC</h3>
                     </div>
                 </div>
-                <div className="max-h-fit max-w-full mt-6">
+                <div className="relative top-8 max-h-fit max-w-full mt-6">
                     <ControlList/>
                 </div>
             </Card>
