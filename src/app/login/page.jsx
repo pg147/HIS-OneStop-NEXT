@@ -52,7 +52,7 @@ export default function Login() {
         const data = await response.json();
         console.log("Login successful. Token:", data.token);
         const router = useRouter();
-        router.push('');
+        router.push('/interface');
 
       } else {
         const errorData = await response.json();
