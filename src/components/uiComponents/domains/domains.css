@@ -1,0 +1,58 @@
+.exploreButton,
+.techDomain, 
+.entDomain,
+.litDomain, 
+.photoDomain, 
+.sportsDomain, 
+.socialsDomain, 
+.achieveDomain:hover {
+    cursor: pointer;
+}
+
+.exploreButton,
+.techDomain, 
+.entDomain,
+.litDomain, 
+.photoDomain, 
+.sportsDomain, 
+.socialsDomain, 
+.achieveDomain {
+    position: relative;
+}
+
+.techDomain {
+    background: url('./TechDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.entDomain {
+    background: url('./EntDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.litDomain {
+    background: url('./LitDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.photoDomain {
+    background: url('./PhotoDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.sportsDomain {
+    background: url('./SportsDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.socialsDomain {
+    background: url('./SocialsDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.achieveDomain {
+    background: url('./AchieveDomain.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

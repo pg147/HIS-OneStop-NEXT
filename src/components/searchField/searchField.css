@@ -1,0 +1,12 @@
+.searchHolder {
+    border: none;
+    background: none;
+    width: 400px;
+} 
+.searchHolder:placeholder {
+    color: black;
+}
+.searchHolder:focus {
+    outline: none;
+}
+  
