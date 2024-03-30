@@ -1,0 +1,12 @@
+.createPostHolder {
+    border: none;
+    background: white;
+    width: 550px;
+} 
+.createPostHolder:placeholder {
+    color: black;
+}
+.createPostHolder:focus {
+    outline: none;
+}
+  
