@@ -1,5 +1,4 @@
 import { Card } from "../ui/card";
-// import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import ControlList from "./controlsList";
 
 export default function ControlBar() {
@@ -12,7 +11,6 @@ export default function ControlBar() {
                         <h3 className="mt-2 font-medium text-xl">The RAC</h3>
                     </div>
                 </div>
-
                 <div className="max-h-fit max-w-full mt-6">
                     <ControlList/>
                 </div>
