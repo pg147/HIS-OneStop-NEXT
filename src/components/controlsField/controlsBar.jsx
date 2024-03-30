@@ -12,7 +12,8 @@ export default function ControlBar() {
                             <AvatarImage className="rounded-full" src="https://github.com/shadcn.png" />
                             <AvatarFallback>CN</AvatarFallback>
                         </Avatar> */}
-                        <h3 className="mt-2 font-medium text-xl">Munuko</h3>
+                        <img src="https://unsplash.com/photos/building-at-night-hthSFNDYU_s" height={150} width={150} className="rounded-full" alt="" />
+                        <h3 className="mt-2 font-medium text-xl">The RAC</h3>
                     </div>
                 </div>
 
