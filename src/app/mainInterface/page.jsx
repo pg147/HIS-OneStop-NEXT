@@ -5,13 +5,13 @@ import ControlBar from "../controlsField/controlsBar";
 import { useRouter } from "next/navigation";
 
 export default function Interface() {
-    return (
-        <>
-            <div className="flex p-8">
-                <DomainsBar />
-                <GridList />
-                <ControlBar />
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div className="flex p-8">
+        <DomainsBar />
+        <GridList />
+        <ControlBar />
+      </div>
+    </>
+  );
 }

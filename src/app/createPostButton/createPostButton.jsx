@@ -1,0 +1,37 @@
+import { Card } from "../../components/ui/card";
+import { PlusIcon } from "@radix-ui/react-icons";
+import { Button } from "../../components/ui/button";
+import Link from "next/link"; // Import Link from Next.js
+
+import "./createPostButton.css";
+
+export default function CreatePost() {
+  return (
+    <>
+      {/* Wrap the button with Link component from Next.js */}
+      <Link href="/createPost/page">
+        <div>
+          <Card className="flex items-center justify-between shadow-none text-lg rounded-3xl bg-[#f5f5f5] border-2 border-[#D9D9D9] p-3 h-[70px] w-[700px]">
+            <img
+              alt=""
+              width={48}
+              height={48}
+              className="rounded-2xl mr-0 bg-slate-700"
+            />
+            <input
+              type="text"
+              placeholder="Create a post"
+              className="createPostHolder h-11 rounded-2xl p-4"
+            />
+            {/* Remove onClick handler from Button component */}
+            <Button className="addPostButton h-12 w-12 rounded-2xl">
+              <Link href="../createPost">
+                <PlusIcon className="h-8 w-8" />
+              </Link>
+            </Button>
+          </Card>
+        </div>
+      </Link>
+    </>
+  );
+}

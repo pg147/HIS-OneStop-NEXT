@@ -1,21 +1,16 @@
-import ControlBar from "@/components/controlsField/controlsBar";
-import { DomainsBar } from "@/components/domainsField/domainsField";
-import SearchBar from "@/components/searchField/searchField";
+import ControlBar from "@/app/controlsField/controlsBar";
+import { DomainsBar } from "@/app/domainsField/domainsField";
+import SearchBar from "@/app/searchField/searchField";
 import Signup from "@/app/signup/page";
-import CreatePost from "@/components/createPost/page";
+import CreatePost from "@/app/createPost/page";
 import Login from "./login/page";
 
 export default function Home() {
   return (
     <>
-      <div className="flex justify-between p-8">
-        {/* <Signup /> */}
-        <CreatePost />
-        {/* <DomainsBar />
-        <SearchBar />
-        <ControlBar /> */}
-      </div>
-      <Login />
+      {/* <Login />'
+      {/* <Interface /> */}
+      <Signup />
     </>
   );
 }
