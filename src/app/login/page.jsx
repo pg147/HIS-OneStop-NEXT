@@ -5,9 +5,9 @@ import Image from "next/image";
 import brandlogo from "../../../src/assets/brandlogo.png";
 import { useState } from "react";
 import * as React from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 const apiURL = "https://auth-api-his-one-stop-muskanjais30.onrender.com/user";
-
+import Link from "next/link";
 
 import {
   Card,
@@ -53,8 +53,7 @@ export default function Login() {
         const data = await response.json();
         console.log("Login successful. Token:", data.token);
         const router = useRouter();
-        router.push('/mainInterface');
-
+        router.push("/mainInterface");
       } else {
         const errorData = await response.json();
         console.error("Login failed:", errorData.message);
@@ -95,12 +94,7 @@ export default function Login() {
       <div className="flex items-center justify-between w-full max-w-4xl px-6">
         <div className="flex flex-col items-start">
           <div className="relative">
-            <Image
-              src={brandlogo}
-              alt="Brand Logo"
-              height={600}
-              width={600}
-            />
+            <Image src={brandlogo} alt="Brand Logo" height={600} width={600} />
           </div>
         </div>
         <div className="w-px h-100 bg-gray-300" />
@@ -110,20 +104,22 @@ export default function Login() {
               <TabsList className="grid w-full grid-cols-2 mb-4">
                 <TabsTrigger
                   value="student"
-                  className={`rounded-xl ${position === "student"
+                  className={`rounded-xl ${
+                    position === "student"
                       ? " text-white bg-black"
                       : "bg-transparent text-black"
-                    }`}
+                  }`}
                   onClick={() => setPosition("student")}
                 >
                   Student
                 </TabsTrigger>
                 <TabsTrigger
                   value="club"
-                  className={`rounded-xl ${position === "club"
+                  className={`rounded-xl ${
+                    position === "club"
                       ? " text-white bg-black"
                       : "bg-transparent text-black"
-                    }`}
+                  }`}
                   onClick={() => setPosition("club")}
                 >
                   Club
@@ -155,10 +151,12 @@ export default function Login() {
                           <div className="text-sm"></div>
                         </div>
                         <Button
-                          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700"
                           onClick={handleStudentLogin}
+                          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700"
                         >
-                          Log in
+                          <Link href="/mainInterface">
+                            <div className="text-white">Log in</div>
+                          </Link>
                         </Button>
                       </div>
                     </form>
@@ -192,6 +190,11 @@ export default function Login() {
                           className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-black hover:bg-gray-700"
                           onClick={handleClubLogin}
                         >
+                          <Link href="/mainInterface">
+                            <div className="font-medium text-indigo-600 hover:text-indigo-500">
+                              Log in
+                            </div>
+                          </Link>
                           Log in
                         </Button>
                       </div>
