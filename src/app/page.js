@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <>
       {/* <Login /> */}
-      {/* <Interface /> */}
-      <Signup />
+      <Interface />
+      {/* <Signup /> */}
     </>
   );
 }
