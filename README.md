@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+## APIs Used (Tech Stack used: MERN)
+
+1) Auth API : https://auth-api-his-one-stop-muskanjais30.onrender.com
+    
+2) Create and Display Event Post API : https://his-one-stop-posts.onrender.com
